@@ -1,28 +1,9 @@
-# Booklog
+# Error handling within an http4s Web application
 
-This is a re-write effort - replacement for an ancient command line app i used to use - Readinglog.
+Modeling errors via a sealed trait and having exhaustive pattern matching in error handler associated with an http4s service, without EitherT - just using MonadError and an optics library that derives MonadError instances
 
-While I need a new app, I might as well get acquainted with http4s, doobie, circe, cats-effect and whatnot
-
-The Postgres database can be created and pre-loaded with some data by running this simple command (provided you have docker running and docker-compose installed).
-
-```bash
-docker-compose up &
-#later to stop/start
-docker-compose stop
-docker-compose start
-```
-
-To connect to local PostgreSQL database, use the `./connect-to-db.sh` script, using the default password "booklog".
+Took me a while to get all the moving parts together into a working example. The code is largely based (with minor modifications) on Gabriel Volpe's article here: https://typelevel.org/blog/2018/08/25/http4s-error-handling-mtl.html and this Gist: https://gist.github.com/gvolpe/3fa32dd1b6abce2a5466efbf0eca9e94
 
 
-to reload sample data from included script in data folder, provided you launched psql client from project root directory, use this command:
-
-```
-\i data/002-load-data.sql
-```
-
-exit psql by pressing Ctrl+D
-
-date started working on this thing: 2018-05-12
+date first implemented: 2018-09-04
 
